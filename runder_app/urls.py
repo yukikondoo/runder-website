@@ -8,6 +8,8 @@ app_name = 'runder_app'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('test/', views.test, name='test'),
+    path('login/', views.user_login, name='user_login'),
+    path('signup/', views.register, name='register'),
+    path('special/', views.special, name='special'),
     
 ]

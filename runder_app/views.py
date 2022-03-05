@@ -101,17 +101,19 @@ def user_login(request):
 
     if request.method == 'POST':
         # First get the username and password supplied
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
         # Django's built-in authentication function:
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(username=username, password=password)
 
         # If we have a user
         if user:
             #Check it the account is active
             if user.is_active:
                 # Log the user in.
+
+                ### There is a problem for this place #######
                 login(request, user)
                 # Send the user back to some page.
                 # In this case their homepage.
